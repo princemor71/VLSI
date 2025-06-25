@@ -1,0 +1,20 @@
+`timescale 1ns/1ps
+
+module testbench();
+reg [1:0] a, b;
+wire [3:0] c;
+multi uut (.a(a),.b(b),.c(c) );
+initial 
+begin
+$display("Time\t a\t b\t c (Product)");
+$monitor("%0dns\t %b\t %b\t %b", $time, a, b, c);
+a = 2'b00; b = 2'b00; #10; 
+a = 2'b01; b = 2'b01; #10;  
+a = 2'b10; b = 2'b10; #10;  
+a = 2'b11; b = 2'b11; #10;  
+a = 2'b10; b = 2'b11; #10;  
+a = 2'b11; b = 2'b01; #10;  
+$finish;
+end
+
+endmodule
