@@ -1,0 +1,25 @@
+
+module full_adder(a,b,cin,cout,sum);
+input a,b,cin;
+output  cout,sum;
+assign sum=a^b^cin;
+assign cout=(a&b|b&cin|cin&a);
+endmodule
+
+module adder_sub(a,b,cin,cout,sum);
+input [3:0]a,b;
+input cin;
+output cout;
+output [3:0]sum;
+wire [3:0]w;
+wire [2:0]c;
+xor n3(w[0],cin,b[0]);
+xor n4(w[1],cin,b[1]);
+xor n5(w[2],cin,b[2]);
+xor n6(w[3],cin,b[3]);
+
+full_adder m1(a[0],w[0],cin,sum[0],c[0]);
+full_adder m2(a[1],w[1],c[0],sum[1],c[1]);
+full_adder m3(a[2],w[2],c[1],sum[2],c[2]);
+full_adder m4(a[3],w[3],c[2],sum[3],cout);
+endmodule
