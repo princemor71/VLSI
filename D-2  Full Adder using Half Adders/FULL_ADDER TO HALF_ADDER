@@ -1,0 +1,13 @@
+module half_adder_full_subtractor(a,b,cin,s,cout);
+input a,b,cin;
+output s,cout;
+wire [3:0]s;
+xor l0(s[0],a,b);
+and l1(s[1],a,b);
+and l2(s[2],~a,b);
+xor l3(s,s[0],cin);
+and l4(s[3],s[0],cin);
+or l5(cout,s[2],s[3]);
+
+
+endmodule
