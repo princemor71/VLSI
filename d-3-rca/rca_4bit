@@ -1,0 +1,51 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 08.01.2025 10:30:39
+// Design Name: 
+// Module Name: ripple_4bit
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+module full_adder (a,b,cin,cout,s);
+input a,b,cin;
+output cout ,s;
+wire [2:0]c;
+xor l0(s,a,b,cin);
+and l1(c[0],a,b);
+and l2(c[1],a,cin);
+and l3(c[2],b,cin);
+or l4(cout,c[0],c[1],c[2]);
+
+endmodule
+  
+
+
+module ripple_4bit(a,b,cin,s,cout );
+input[3:0] a;
+input [3:0]b;
+input cin;
+output [4:0]s;
+output cout;
+wire [3:0]c;
+ full_adder l5(a[0],b[0],cin,s[0],c[1]);
+ full_adder l6(a[1],b[1],c[1],s[1],c[2]);
+ full_adder l7(a[2],b[2],c[2],s[2],c[3]);
+ full_adder l8(a[3],b[3],c[3],s[3],cout);
+
+endmodule
