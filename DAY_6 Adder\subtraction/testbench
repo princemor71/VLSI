@@ -1,0 +1,19 @@
+
+
+module testbench( );
+reg [3:0]a,b;
+reg cin;
+wire [3:0]sum;
+wire cout ;
+adder_sub uut (a,b,cin,cout,sum);
+initial
+begin
+for (integer i=0;i<10;i=i+1)begin
+a=$random();
+b=$random();
+cin=$random();
+#10;
+end
+$finish();
+end
+endmodule
