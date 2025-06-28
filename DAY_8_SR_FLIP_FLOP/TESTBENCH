@@ -1,0 +1,48 @@
+module testbench();
+
+  // Declare inputs and outputs
+  reg s, r, clk, rest;
+  wire q, qn;
+
+  // Instantiate the SR flip-flop module
+  sr_filp_flop uut (
+    .s(s),
+    .r(r),
+    .clk(clk),
+    .rest(rest),
+    .q(q),
+    .qn(qn)
+  );
+
+  // Generate clock signal
+  always #5 clk = ~clk;
+
+  // Initial block to start clock
+  initial clk = 0;
+
+  // Test stimulus
+  initial begin
+    // Initial reset
+    rest = 1; s = 0; r = 0; #10;
+    rest = 0;             #10;
+
+    // Test Case 1: Set = 1, Reset = 0 (Q should be 1)
+    s = 1; r = 0; rest = 0; #10;
+
+    // Test Case 2: Set = 0, Reset = 1 (Q should be 0)
+    s = 0; r = 1; rest = 0; #10;
+
+    // Test Case 3: Set = 0, Reset = 0 (Hold)
+    s = 0; r = 0; rest = 0; #10;
+
+    // Test Case 4: Invalid Condition (S = 1, R = 1)
+    s = 1; r = 1; rest = 0; #10;
+
+    // Test Case 5: Reset again
+    rest = 1; s = 0; r = 0; #10;
+    rest = 0;               #10;
+
+    $finish;  // End the simulation
+  end
+
+endmodule
