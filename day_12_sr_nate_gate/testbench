@@ -1,0 +1,18 @@
+
+
+module testbench();
+reg s,r,clk;
+wire q,qbar;
+SR_nand uut (s,r,clk,q,qbar);
+initial
+begin
+for (integer i=0;i<=10;i=i+1)
+begin
+s=$random();
+r=$random();
+clk=$random();
+#10;
+end
+$finish();
+end
+endmodule
