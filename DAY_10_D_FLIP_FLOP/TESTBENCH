@@ -1,0 +1,27 @@
+
+module testbench();
+  reg d, clk, reset;
+  wire q, qn;
+
+  d_flip_flop dut (
+    .d(d),.clk(clk),.reset(reset),.q(q),.qn(qn)
+  );
+always #5 clk = ~clk;
+initial clk = 0;
+initial begin
+    reset = 1; d = 0; #10;
+  reset = 0; d = 1; #10;
+  d = 0; reset = 0; #10;
+  d = 1; #10;
+  reset = 1; #10;
+  reset = 0; d = 0; #10;
+  d = 1; #10;
+  d = 0; #10;
+  reset = 1; #10;
+
+    reset = 0; d = 1; #10;
+
+    $finish;
+  end
+
+endmodule
