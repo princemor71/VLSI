@@ -1,0 +1,18 @@
+
+module sr_filp_flop(s,r,rest,q,qn,clk);
+input s,r,clk,rest;
+output  reg q,qn;
+always @(posedge clk)begin
+if(rest)begin
+q<=0;qn<=1;
+end
+else begin
+case({s,r})
+2'b00:{q,qn}<={q,qn};
+2'b01:{q,qn}<={1'b0,1'b1};
+2'b10: {q,qn}<={1'b1,1'b0};
+2'b11: {q,qn}<={1'bx,1'bx};
+endcase
+end
+end
+endmodule
