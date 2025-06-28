@@ -1,0 +1,18 @@
+
+
+module d_flip_flop(d,reset,q,qn,clk);
+input d,clk,reset;
+output reg q,qn;
+always @(posedge clk)
+begin
+if(reset) begin
+q<=0;qn<=1;
+end
+else begin
+case(d)
+1'b0:{q,qn}<={1'b0,1'b1};
+1'b1:{q,qn}<={1'b1,1'b0};
+ endcase
+ end
+ end
+endmodule
