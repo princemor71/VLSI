@@ -1,0 +1,18 @@
+
+module testbench( );
+reg clk,a,rst;
+wire q,qbar;
+T_FLIP_FLOP uut(a,clk,rst,q,qbar);
+initial
+begin
+rst=1;
+#10;
+rst=0;
+for (integer i=0;i<10;i=i+1)begin
+a=$random();
+clk=$random();
+#10;
+end
+$finish();
+end
+endmodule
