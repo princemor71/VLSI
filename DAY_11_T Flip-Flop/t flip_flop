@@ -1,0 +1,24 @@
+
+
+module T_FLIP_FLOP (
+    input  wire t,        // Toggle input
+    input  wire clk,      // Clock input
+    input  wire reset,    // Asynchronous reset
+    output reg  q,        // Output
+    output wire qn        // Complement output
+);
+
+  // Assign complement of q
+  assign qn = ~q;
+
+  // Behavior of T flip-flop
+  always @(posedge clk or posedge reset) begin
+    if (reset)
+      q <= 0;                  // Reset to 0
+    else if (t)
+      q <= ~q;                 // Toggle when t = 1
+    else
+      q <= q;                  // Hold state when t = 0
+  end
+
+endmodule
