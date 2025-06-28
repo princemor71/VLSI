@@ -1,0 +1,60 @@
+
+module testbench();
+
+    // Inputs
+    reg j, k, reset, clk;
+
+    // Outputs
+    wire q, qn;
+
+    // Instantiate the DUT (Device Under Test)
+    jk_flip_flop uut (
+        .j(j),
+        .k(k),
+        .reset(reset),
+        .clk(clk),
+        .q(q),
+        .qn(qn)
+    );
+
+
+
+
+
+    always #5 clk = ~clk;
+
+
+    initial clk = 0;
+
+
+    initial begin
+
+        reset = 1; j = 0; k = 0; #10;
+        reset = 0;              #10;
+
+
+        j = 0; k = 0; reset = 0; #10;
+
+
+        j = 0; k = 1; reset = 0; #10;
+
+
+        j = 1; k = 0; reset = 0; #10;
+
+
+        j = 1; k = 1; reset = 0; #10;
+
+
+        reset = 1; j = 0; k = 0; #10;
+        reset = 0;              #10;
+
+        j = 1; k = 0; reset = 0; #10;
+
+
+        j = 0; k = 1; reset = 0; #10;
+
+
+        $finish;
+    end
+
+endmodule
