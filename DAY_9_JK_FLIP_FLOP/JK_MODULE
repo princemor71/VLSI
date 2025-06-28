@@ -1,0 +1,19 @@
+
+module jk_flip_flop(j,k,clk,reset,q,qn);
+input j,k,clk,reset;
+output reg q,qn;
+always @(posedge clk)begin
+if (reset)begin
+q<=1'b0;qn<=1'b1;
+end
+else begin
+case({j,k})
+2'b00:{q,qn}<={q,qn};
+2'b01:{q,qn}<={1'b0,1'b1};
+2'b10:{q,qn}<={1'b1,1'b0};
+2'b11:{q,qn}<={qn,q};
+endcase
+end
+end
+endmodule
+
