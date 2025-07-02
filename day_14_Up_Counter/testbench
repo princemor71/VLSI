@@ -1,0 +1,32 @@
+`timescale 1ns/1ps
+
+module testbench();
+    reg clk, reset;
+    wire [3:0] cout;
+
+    // Instantiate the counter module
+    up_counter uut(clk, reset, cout);
+
+    // Clock generation
+    initial clk = 0;
+    always #5 clk = ~clk;  // 10 ns clock period
+
+    // Stimulus generation
+    initial begin
+        reset = 1;  // Assert reset
+        #10;
+
+        reset = 0;  #10;
+        reset = 0;  #10;
+        reset = 0;  #10;
+        reset = 0;  #10;
+        reset = 0;  #10;
+        reset = 0;  #10;
+        reset = 0;  #10;
+        reset = 0;  #10;
+        reset = 0;  #10;
+        reset = 0;  #10;
+
+        $finish;
+    end
+endmodule
