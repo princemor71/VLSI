@@ -1,0 +1,54 @@
+`timescale 1ns/1ps
+
+module testbench();
+    reg [2:0] a;
+    reg en;
+    wire [7:0] y;
+
+    // DUT instantiation
+    parity_bit uut (.a(a), .en(en), .y(y));
+
+    initial begin
+        a = $urandom_range(0, 7); en = $urandom_range(0, 1);
+        #10;
+        $display("Time=%0t | a=%b | en=%b | y=%b", $time, a, en, y);
+
+        a = $urandom_range(0, 7); en = $urandom_range(0, 1);
+        #10;
+        $display("Time=%0t | a=%b | en=%b | y=%b", $time, a, en, y);
+
+        a = $urandom_range(0, 7); en = $urandom_range(0, 1);
+        #10;
+        $display("Time=%0t | a=%b | en=%b | y=%b", $time, a, en, y);
+
+        a = $urandom_range(0, 7); en = $urandom_range(0, 1);
+        #10;
+        $display("Time=%0t | a=%b | en=%b | y=%b", $time, a, en, y);
+
+        a = $urandom_range(0, 7); en = $urandom_range(0, 1);
+        #10;
+        $display("Time=%0t | a=%b | en=%b | y=%b", $time, a, en, y);
+
+        a = $urandom_range(0, 7); en = $urandom_range(0, 1);
+        #10;
+        $display("Time=%0t | a=%b | en=%b | y=%b", $time, a, en, y);
+
+        a = $urandom_range(0, 7); en = $urandom_range(0, 1);
+        #10;
+        $display("Time=%0t | a=%b | en=%b | y=%b", $time, a, en, y);
+
+        a = $urandom_range(0, 7); en = $urandom_range(0, 1);
+        #10;
+        $display("Time=%0t | a=%b | en=%b | y=%b", $time, a, en, y);
+
+        a = $urandom_range(0, 7); en = $urandom_range(0, 1);
+        #10;
+        $display("Time=%0t | a=%b | en=%b | y=%b", $time, a, en, y);
+
+        a = $urandom_range(0, 7); en = $urandom_range(0, 1);
+        #10;
+        $display("Time=%0t | a=%b | en=%b | y=%b", $time, a, en, y);
+
+        $finish;
+    end
+endmodule
