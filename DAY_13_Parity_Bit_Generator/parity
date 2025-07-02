@@ -1,0 +1,21 @@
+
+
+module parity_bit(a,en,y);
+input [2:0]a;
+input en;
+output reg  [7:0]y;
+wire w1,w2;
+assign w1=^(a);
+assign w2=~(^(a));
+always @(*)
+begin
+if (en) begin
+ y=~(w2);
+end
+else begin
+y=~(w1);
+
+end
+end
+endmodule
+
