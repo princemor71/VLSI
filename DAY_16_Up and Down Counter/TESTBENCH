@@ -1,0 +1,19 @@
+
+
+
+module testbench();
+reg clk,reset;
+wire [3:0]cout;
+
+down_counter uut(clk,reset,cout);
+always #5 clk=~clk;
+initial clk=0;
+initial
+begin
+reset=1;#10;
+for (integer i=0;i<10;i=i+1) begin
+reset=0;#10;
+end
+$finish();
+end
+endmodule
