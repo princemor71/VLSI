@@ -1,0 +1,19 @@
+// TWO METHIODS CODE TO WITRE 
+
+module bcd_excess_3(b,y);
+input [3:0]b;
+output  reg [3:0]y;
+//wire [3:0]w;
+
+//assign w[0]=b[0]|b[1];
+//assign w[1]=w[0]&b[2];
+//assign y[3]=w[1]|b[3];
+//assign w[2]=b[0]^b[1];
+//assign y[2]=w[0]^b[2];
+//assign y[1]=~w[2];
+//assign y[0]=~b[0];
+always @(*)
+begin
+y=b+4'b0011;
+end
+endmodule
