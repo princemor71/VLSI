@@ -1,0 +1,20 @@
+
+
+module testbench(  );
+reg [3:0]b;
+wire [3:0]g;
+ b_g uut (b,g);
+ initial
+ begin
+ b=4'b1010;
+ #10;
+ b=4'b0010;
+ #10;
+ b=4'b0100;
+ #10;
+ b=4'b0110;
+ #10;
+ $finish();
+ end
+ 
+endmodule
