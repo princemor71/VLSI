@@ -1,0 +1,19 @@
+
+module testbench();
+reg clk,rst,sel;
+reg [3:0]pi;
+wire q;
+piso uut (.pi(pi),.clk(clk),.rst(rst),.sel(sel),.q(q));
+always #10 clk=~clk;
+initial clk=0;
+initial 
+begin
+for(integer i=0;i<=10;i=i+1) begin
+pi=$random();
+sel=$random();
+rst=$random();
+#10;
+end
+$finish();
+end
+endmodule
