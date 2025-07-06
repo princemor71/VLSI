@@ -1,0 +1,18 @@
+
+module d_sr(d,clk,q,qn);
+input d,clk;
+output q,qn;
+wire s,r,w1,w2;
+
+assign s=d;
+assign r=~d;
+assign w1=~(s&clk);
+assign w2=~(r&clk);
+assign q=~(w1&qn);
+assign qn=~(w2&q);
+
+always @(posedge clk)
+begin
+
+end
+endmodule
