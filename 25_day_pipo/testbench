@@ -1,0 +1,29 @@
+
+module testbench();
+reg [3:0]pi;
+reg clk,rst;
+wire [3:0]po;
+
+pipo uut (pi,clk,rst,po);
+always #10 clk=~clk;
+initial clk=0;
+initial
+begin
+//for (integer i=0;i<=10;i=i+1)begin
+//pi=$random();
+//rst=$random();
+pi=4'b0011;
+rst=1;
+#10;
+pi=4'b1011;
+rst=0;
+#10;
+pi=4'b1001;
+rst=0;
+#10;
+pi=4'b0111;
+rst=0;
+#10;
+$finish();
+end
+endmodule
