@@ -1,0 +1,19 @@
+
+
+module testbench();
+reg d,clk,reset;
+wire q,qn;
+
+d_to uut(d,clk,reset,q,qn);
+always #10 clk=~clk;
+initial clk=0;
+initial
+begin
+for(integer i=0;i<=10;i=i+1)begin
+d=$random();
+reset=$random();
+#10;
+end
+$finish();
+end
+endmodule
