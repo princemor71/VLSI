@@ -1,0 +1,25 @@
+
+
+
+module d(input d, input clk, input rst, output reg q);
+    always @(posedge clk or posedge rst) begin
+        if (rst)
+            q <= 1'b0; // Clear output when reset is high
+        else
+            q <= d; // Store input data on clock edge
+    end
+endmodule
+
+// 4-bit SIPO Shift Register Module
+module sipo1(input si, input clk, input rst, output [3:0] so);
+    wire [2:0] qc; // Internal wires to connect flip-flops
+
+    // Instantiating four D flip-flops to form a shift register
+    d l1 (si, clk, rst, qc[0]);  // First D flip-flop
+    d l2 (qc[0], clk, rst, qc[1]); // Second D flip-flop
+    d l3 (qc[1], clk, rst, qc[2]); // Third D flip-flop
+    d l4 (qc[2], clk, rst, so[3]); // Fourth D flip-flop
+
+    assign so[2:0] = qc[2:0]; // Assign remaining outputs
+endmodule
+
