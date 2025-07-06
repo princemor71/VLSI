@@ -1,0 +1,40 @@
+
+module testbench;
+    reg clk, rst, si;
+    wire [3:0] so;
+    
+    // Instantiate the SIPO Shift Register
+    sipo uut (si, clk, rst, so);
+    
+    // Clock Generation (Toggle every 5ns)
+    always #5 clk = ~clk;
+    
+    initial begin
+        // Initialize signals
+        clk = 0;
+        rst = 1;
+        si = 0;
+        
+        #10;
+        rst = 0;  // Release reset
+        
+        // Serial Input Test Pattern
+        si = 0; #10;
+        si = 1; #10;
+        si = 0; #10;
+        si = 1; #10;
+        si = 1; #10;
+        si = 0; #10;
+        si = 1; #10;
+        si = 1; #10;
+
+        // Random Input Test (Optional)
+        // for (integer i = 0; i < 10; i = i + 1) begin
+        //     si = $random % 2; // Generates 0 or 1
+        //     #10;
+        // end
+        
+        // Stop Simulation
+        $finish;
+    end
+endmodule
