@@ -1,0 +1,30 @@
+
+module t_to_d(t,clk,reset,q,qn);
+input t ,clk,reset;
+output reg  q,qn;
+always @(posedge clk)
+begin
+if (reset)begin
+q<=1'b0;
+qn<=1'b1;
+end
+else begin
+case(t)
+1'b1:{q,qn}={1'b0,1'b1};
+1'b0:{q,qn}={1'b1,1'b0};
+endcase
+end
+end
+endmodule
+
+module d_to(d,clk,reset,q,qn);
+input d,clk,reset;
+output q,qn;
+wire w1;
+assign w1=(q^d);
+t_to_d l1(w1,clk,reset,q,qn);
+endmodule
+
+
+
+
