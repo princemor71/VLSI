@@ -1,0 +1,33 @@
+
+module pipo(pi,clk,rst,po );
+input [3:0]pi;
+input clk,rst;
+output [3:0]po;
+d_4 l1(pi[0],clk,rst,po[0]);
+d_4 l5(pi[1],clk,rst,po[1]);
+d_4 l2(pi[2],clk,rst,po[2]);
+d_4 l3(pi[3],clk,rst,po[3]);
+
+
+endmodule
+
+
+module d_4(d,clk,rst,q,);
+input d,clk,rst;
+output reg q;
+
+always @(posedge clk)
+begin
+if(rst) 
+begin
+q<=0;
+end
+else begin
+case(d)
+1'b0:q=1'b0;
+1'b1:q=1'b1;
+endcase
+end
+end
+
+endmodule
