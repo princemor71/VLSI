@@ -1,0 +1,15 @@
+
+module testbench();
+reg [3:0]bcd;
+wire [6:0]seg;
+seven_segment uut (bcd,seg);
+initial
+begin
+
+for (integer i=0;i<10;i=i+1)begin
+bcd=$random();
+#10;
+end
+$finish();
+end
+endmodule
