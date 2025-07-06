@@ -1,0 +1,31 @@
+
+
+module testbench();
+reg clk,en,reset;
+reg [3:0]in;
+wire [3:0]out;
+left_right uut(.clk(clk),.en(en),.reset(reset),.in(in),.out(out));
+always #10 clk=~clk;
+initial clk=0;
+
+initial
+
+begin
+reset=0;#10;
+in=4'b0011; en=0;
+#10;
+in=4'b1011;en=1;
+#10;
+in=4'b0111; en=1;
+#10;
+in=4'b0010;en=0;
+#10;
+reset=1;#10;
+en=1;
+
+#10;
+$finish();
+end
+
+
+endmodule
