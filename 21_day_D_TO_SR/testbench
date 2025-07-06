@@ -1,0 +1,20 @@
+
+module testbench();
+reg d,clk;
+wire q,qn;
+ d_sr uut (d,clk,q,qn);
+ always #5 clk=~clk;
+ initial clk=0;
+ initial 
+ begin
+ d=1;
+ #10;
+ d=0;
+ #10;
+ d=1;
+ #10;
+ d=0;
+ #10;
+ $finish();
+ end
+ endmodule
