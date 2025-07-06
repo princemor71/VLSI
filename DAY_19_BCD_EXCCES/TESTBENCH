@@ -1,0 +1,14 @@
+
+module testebench( );
+reg [3:0]b;
+wire [3:0]y;
+bcd_excess_3 uut(.b(b),.y(y));
+initial
+begin
+for (integer i=0; i<10;i=i+1) begin
+b=$random();
+#10;
+end
+$finish();
+end
+endmodule
