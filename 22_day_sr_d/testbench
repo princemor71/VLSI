@@ -1,0 +1,23 @@
+
+
+module testbench();
+reg d,clk;
+wire q,qn,s,r;
+sr_to_d uut (d,clk,q,qn,s,r);
+always #10 clk=~clk;
+initial clk=1;
+initial
+begin
+d=1;
+#10;
+d=0;
+#10;
+d=1;
+#10;
+d=1;
+#10;
+d=0;
+#10;
+$finish();
+end
+endmodule
