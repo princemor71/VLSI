@@ -1,0 +1,25 @@
+
+
+module sr_to_d (
+    input d,         // Data input
+    input clk,       // Clock signal
+    output q,        // Output
+    output qn,       // Complement of the output
+    output s,        // Set signal
+    output r         // Reset signal
+);
+    reg q_reg;        // Register to hold the output Q
+
+    // D Flip-Flop behavior
+    always @(posedge clk) begin
+        q_reg <= d;   // On the clock edge, Q gets the value of D
+    end
+
+    // Outputs
+    assign q = q_reg;         // Q output
+    assign qn = ~q_reg;       // Q-bar (complement of Q)
+
+    // S and R logic derived from Q and D
+    assign s = d & ~q;        // S = D AND NOT(Q)
+    assign r = ~d & q;        // R = NOT(D) AND Q
+endmodule
